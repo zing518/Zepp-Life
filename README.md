@@ -1,3 +1,5 @@
+[![Walk](https://github.com/mybdye/Let-the-code-walk-for-me/actions/workflows/main.yml/badge.svg)](https://github.com/mybdye/Let-the-code-walk-for-me/actions/workflows/main.yml)
+
 #### ㊙️
 
 |YOU SECRET NAME|YOU SECRET VALUE|
@@ -10,4 +12,3 @@
   
 #### 📖
   * https://github.com/EEEugene/StepNumberChangeSNC
-
