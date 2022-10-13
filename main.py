@@ -175,7 +175,7 @@ def main_handler(step=step):
                 step = str(random.randint(int(setp_array[0]),int(setp_array[1])))
             elif str(step) == '0':
                 step = ''
-            body += main(user_list[line], passwd_list[line], step) + '\n'
+            body += main(user_list[line], passwd_list[line], step)
         push(body)
     else:
         print('用户名和密码数量不对')
