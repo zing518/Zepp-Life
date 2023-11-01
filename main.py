@@ -9,7 +9,9 @@ password = os.environ['PASSWORD']
 # 要修改的步数，直接输入想要修改的步数值，留空为随机步数20000至29999之间
 step = ''
 # Bark Push
-BarkKey = os.environ['BARK_KEY']
+bark_key = os.environ['BARK_KEY']
+# Pushplus
+pushplus_token = os.environ['PUSHPLUS_TOKEN']
 # TG Push
 tg_bot_token = os.environ['TG_BOT_TOKEN']
 tg_user_id = os.environ['TG_USER_ID']
@@ -25,15 +27,26 @@ def push(body):
     title = '小米运动'
 
     # bark push
-    if BarkKey == '':
+    if bark_key == '':
         print('*** No BARK_KEY ***')
     else:
-        barkurl = 'https://api.day.app/' + BarkKey
+        barkurl = 'https://api.day.app/' + bark_key
         rq_bark = requests.get(url=f'{barkurl}/{title}/{body}?isArchive=1')
         if rq_bark.status_code == 200:
             print('- bark push Done!')
         else:
             print('*** bark push fail! ***', rq_bark.content.decode('utf-8'))
+
+    # pushplus
+    if pushplus_token == '':
+        print('*** No PUSHPLUS_TOKEN ***')
+    else:
+        pushplusurl = 'http://www.pushplus.plus/send?token=' + pushplus_token
+        rq_pushplus = requests.get(url=f'{pushplusurl}&title={title}&content={body}')
+        if rq_pushplus.status_code == 200:
+            print('- pushplus Done!')
+        else:
+            print('*** pushplus fail! ***', rq_pushplus.content.decode('utf-8'))
 
     # tg push
     if tg_bot_token == '' or tg_user_id == '':
